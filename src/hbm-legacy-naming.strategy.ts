@@ -22,7 +22,7 @@ export class HbmLegacyNamingStrategy extends DefaultNamingStrategy
   ): string {
     return (
       snakeCase(embeddedPrefixes.join('_')) +
-      (customName ? customName : snakeCase(propertyName))
+      (customName ? customName : propertyName.toLowerCase())
     );
   }
 
