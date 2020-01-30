@@ -6,15 +6,16 @@ import { snakeCase } from 'typeorm/util/StringUtils';
 // the implicit hibernate naming strategy translates camelcase property names to all lower case on the DB
 // tested with a database schema on postgreSQL from a legacy Java program that has been migrated to typeORM
 //
-// todo: implement strategy below from copied code:
+// todo: implement strategy below from copied snakeCase code
+// check Java implementation of hbm legcy naming strategy implementation
 //
 export class HbmLegacyNamingStrategy extends DefaultNamingStrategy
   implements NamingStrategyInterface {
-
+/*
   tableName(className: string, customName: string): string {
     return customName ? customName : snakeCase(className);
   }
-
+ */
   columnName(
     propertyName: string,
     customName: string,
@@ -30,6 +31,7 @@ export class HbmLegacyNamingStrategy extends DefaultNamingStrategy
     return snakeCase(propertyName);
   }
 
+  // todo : naming strategy implemenation according to legacy hbm?
   joinColumnName(relationName: string, referencedColumnName: string): string {
     return snakeCase(relationName + '_' + referencedColumnName);
   }
